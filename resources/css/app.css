@@ -1,0 +1,28 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #1a202c;
+    color: #bdc1c6;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+.search-result__col {
+    margin: 32px;
+}
+
+.search__result-wrapper a {
+    text-decoration: none;
+}
+
+.search__result-wrapper {
+    width: calc(50vw - 128px);
+}
