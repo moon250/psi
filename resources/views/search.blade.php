@@ -13,4 +13,12 @@
             </div>
         @endforeach
     </div>
+    <div class="search-result__col">
+        @foreach($results[1] as $result)
+            <div class="search__result-wrapper">
+                <a href="{{ $result->getUrl() }}">{{ $result->getTitle() }}</a>
+                <p>{!! $result->getDescription() !!}</p>
+            </div>
+        @endforeach
+    </div>
 </main>

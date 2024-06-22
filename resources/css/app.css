@@ -24,5 +24,9 @@ em {
 }
 
 .search__result-wrapper {
-    width: calc(50vw - 128px);
+    width: calc(50vw - 64px);
+}
+
+main {
+    display: flex;
 }

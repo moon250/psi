@@ -4,7 +4,7 @@ namespace App\Services\Search\Providers;
 
 use App\Services\Search\SearchResult;
 
-interface ProviderInterface
+interface SearchProviderInterface
 {
     /**
      * Perform a search on the searching provider

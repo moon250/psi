@@ -3,6 +3,7 @@
 namespace App\Services\Search;
 
 use App\Services\Search\Providers\GoogleSearchProvider;
+use App\Services\Search\Providers\DDGSearchProvider;
 
 class SearchService
 {
@@ -11,6 +12,7 @@ class SearchService
      */
     private array $providers = [
         GoogleSearchProvider::class,
+        DDGSearchProvider::class
     ];
 
     /**
