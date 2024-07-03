@@ -9,8 +9,7 @@ readonly class SearchResult
         private string $description,
         private string $url,
         private string $path,
-    ) {
-    }
+    ) {}
 
     public function getTitle(): string
     {
