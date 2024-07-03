@@ -37,13 +37,11 @@ class GoogleSearchProvider implements SearchProviderInterface
             }
 
             $link = $node->filter('a')->attr('href') ?? '';
-            $cite = $node->filter('cite');
 
             $resultList[] = new SearchResult(
                 title: $title->innerText(),
                 description: $description->html(),
-                url: $link,
-                path: $cite->text()
+                url: $link
             );
         });
 

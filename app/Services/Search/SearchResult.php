@@ -8,7 +8,6 @@ readonly class SearchResult
         private string $title,
         private string $description,
         private string $url,
-        private string $path,
     ) {}
 
     public function getTitle(): string
@@ -24,10 +23,5 @@ readonly class SearchResult
     public function getUrl(): string
     {
         return $this->url;
-    }
-
-    public function getPath(): string
-    {
-        return $this->path;
     }
 }

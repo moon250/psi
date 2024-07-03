@@ -39,7 +39,6 @@ class DDGSearchProvider implements SearchProviderInterface
                 title: $title->innerText(),
                 description: $description->html(),
                 url: $title->attr('href') ?? '',
-                path: ''
             );
         });
 

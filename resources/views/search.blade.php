@@ -8,7 +8,6 @@
         @foreach($results[0] as $result)
             <div class="search__result-wrapper">
                 <a href="{{ $result->getUrl() }}">{{ $result->getTitle() }}</a>
-                <p>{{ $result->getPath() }}</p>
                 <p>{!! $result->getDescription() !!}</p>
             </div>
         @endforeach
