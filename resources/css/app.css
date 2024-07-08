@@ -1,29 +1,21 @@
+@import "reset.css";
+
 @import "colors.css";
 @import "fonts.css";
 
 @import "home.css";
 @import "search.css";
 
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 body {
-    margin: 0;
     background-color: var(--background);
-
     color: var(--text);
-    font-family: "Montserrat Alternate", "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
 }
 
 em {
     font-weight: bold;
     font-style: normal;
-}
-
-h1 {
-    margin: 0;
 }
 
 input {
@@ -36,12 +28,24 @@ input {
     border: 1px solid var(--text);
     background: transparent;
 
-    font-family: "Montserrat Alternate", "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 16px;
 }
 
 input::placeholder {
     font-weight: bold;
+}
+
+a:hover, .search-result__link:hover {
+    text-decoration: underline;
+}
+
+a, .search-result__link {
+    color: var(--link);
+}
+
+a:visited {
+    color: var(--link-visited);
 }
 
 .flex {

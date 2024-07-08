@@ -41,7 +41,8 @@ class GoogleSearchProvider implements SearchProviderInterface
             $resultList[] = new SearchResult(
                 title: $title->innerText(),
                 description: $description->html(),
-                url: $link
+                url: $link,
+                provider: 'google'
             );
         });
 

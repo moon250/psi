@@ -8,6 +8,7 @@ readonly class SearchResult
         private string $title,
         private string $description,
         private string $url,
+        private string $provider,
     ) {}
 
     public function getTitle(): string
@@ -23,5 +24,10 @@ readonly class SearchResult
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    public function getProvider(): string
+    {
+        return $this->provider;
     }
 }

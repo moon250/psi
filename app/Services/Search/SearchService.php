@@ -34,9 +34,16 @@ class SearchService
         foreach ($this->providers as $provider) {
             $provider = app($provider);
 
-            $results[] = $provider->query($query);
+            $results = array_merge($results, $provider->query($query));
         }
 
-        return $results;
+        return $this->splitArray($results);
+    }
+
+    private function splitArray(array $array): array
+    {
+        $length = count($array);
+
+        return array_chunk($array, ceil($length / 2));
     }
 }
