@@ -1,0 +1,19 @@
+h1 {
+    font-size: 72px;
+    color: var(--text);
+}
+
+h1 > svg {
+    height: 64px;
+
+}
+
+.home-page__search {
+    height: 100vh;
+
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

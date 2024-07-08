@@ -1,0 +1,59 @@
+@media screen and (prefers-color-scheme: dark) {
+    :root {
+        /* Tokyo Night color scheme */
+        --background: #1A1B26;
+        --foreground: #A9B1D6;
+        --selection-background: #545C7E;
+
+        --black: #161720;
+        --bright-black: #545C7E;
+        --red: #DB4B4B;
+        --bright-red: #F7768E;
+        --green: #9ECE6A;
+        --bright-green: #9ECE6A;
+        --yellow: #E0AF68;
+        --bright-yellow: #E0AF68;
+        --blue: #3D59A1;
+        --bright-blue: #7AA2F7;
+        --purple: #9D7CD8;
+        --bright-purple: #BB9AF7;
+        --cyan: #7DCFFF;
+        --bright-cyan: #7DCFFF;
+        --white: #A9B1D6;
+        --bright-white: #C0CAF5;
+
+        --text: var(--bright-white);
+        --link: var(--bright-blue);
+        --link-visited: var(--purple);
+    }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    :root {
+        /* Atom One Light color scheme */
+        --background: #F9F9F9;
+        --foreground: #383A42;
+        --selection-background: #383F48;
+
+        --black: #000000;
+        --bright-black: #383A42;
+        --red: #DE3E35;
+        --bright-red: #DE3E35;
+        --green: #3F953A;
+        --bright-green: #3F953A;
+        --yellow: #D2B67C;
+        --bright-yellow: #D2B67C;
+        --blue: #2F5AF3;
+        --bright-blue: #2F5AF3;
+        --purple: #950095;
+        --bright-purple: #950095;
+        --cyan: #46949E;
+        --bright-cyan: #46949E;
+        --white: #BBBBBB;
+        --bright-white: #F2F2F2;
+
+        --text: var(--bright-black);
+        --link: var(--bright-blue);
+        --link-visited: var(--purple);
+    }
+}

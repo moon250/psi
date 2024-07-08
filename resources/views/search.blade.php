@@ -1,23 +1,32 @@
 @extends('template')
-@section('title')Ѱ - {{ $query }}@endsection
+@section('title'){{ $query }}@endsection
 
-<x-search-form :query="$query" />
+<div class="search__wrapper">
+    <div class="search__form">
+        <a href="/">
+            <svg viewBox="0 0 70 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M39.6078 29.2299C43.9216 29.2299 47.2549 28.4657 49.4118 27.1284C51.5686 25.791 53.1373 23.8806 53.9216 21.9701C54.7059 19.8687 55.098 18.7224 55.2941 13.9463C55.4902 8.59701 56.6667 6.49552 59.0196 3.8209C61.1765 1.14627 64.902 0 70 0V5.5403C68.2353 5.73134 66.8628 6.30448 66.2745 7.64179C65.6863 8.9791 65.2941 10.3164 65.2941 14.3284C65.2941 20.2507 64.7059 22.5433 63.3333 25.791C61.9608 29.0388 59.4118 31.7134 55.4902 33.6239C51.5686 35.7254 46.2745 36.6806 39.4118 36.8716V48.3343C39.4118 51.9642 39.6078 54.2567 40 55.403C40.3922 56.5493 41.3725 57.3134 42.7451 58.0776C44.1176 58.8418 46.2745 59.0328 49.2157 59.0328V64H20.5882V59.0328C23.3333 59.0328 25.4902 58.6507 26.8627 58.0776C28.2353 57.5045 29.2157 56.7403 29.6078 55.594C30 54.4478 30.3922 52.1552 30.3922 48.3343V36.8716C23.5294 36.6806 18.2353 35.7254 14.3137 33.6239C10.5882 31.7134 7.84314 29.0388 6.66667 25.791C5.29412 22.5433 4.70588 20.2507 4.70588 14.1373C4.70588 10.1254 4.31373 8.9791 3.72549 7.64179C3.13725 6.30448 1.76471 5.5403 0 5.34925V0C3.13725 0 5.88235 0.573134 7.84314 1.52836C9.80392 2.48358 11.3725 4.20299 12.549 6.49552C13.7255 8.78806 14.5098 10.3164 14.5098 14.1373C14.7059 18.9134 15.2941 20.0597 15.8824 21.9701C16.4706 23.8806 18.0392 25.791 20.3922 27.1284C22.7451 28.6567 26.0784 29.2299 30.3922 29.2299V14.9015C30.3922 11.2716 30.1961 8.9791 29.8039 7.83284C29.4118 6.68657 28.4314 5.92239 27.0588 5.34925C25.6863 4.77612 23.5294 4.39403 20.5882 4.39403V0H49.4118V4.39403C46.4706 4.39403 44.3137 4.77612 42.9412 5.34925C41.5686 5.92239 40.5882 6.87761 40.1961 7.83284C39.8039 8.9791 39.6078 11.2716 39.6078 14.9015V29.2299Z" fill="currentColor"/>
+            </svg>
+        </a>
+        <x-search-form :query="$query" />
+    </div>
 
-<main>
-    <div class="search-result__col">
-        @foreach($results[0] as $result)
-            <div class="search__result-wrapper">
-                <a href="{{ $result->getUrl() }}">{{ $result->getTitle() }}</a>
-                <p>{!! $result->getDescription() !!}</p>
-            </div>
-        @endforeach
-    </div>
-    <div class="search-result__col">
-        @foreach($results[1] as $result)
-            <div class="search__result-wrapper">
-                <a href="{{ $result->getUrl() }}">{{ $result->getTitle() }}</a>
-                <p>{!! $result->getDescription() !!}</p>
-            </div>
-        @endforeach
-    </div>
-</main>
+    <main class="flex">
+        <div class="search-result__col">
+            @foreach($results[0] as $result)
+                <div class="search-result__wrapper">
+                    <a href="{{ $result->getUrl() }}">{{ $result->getTitle() }}</a>
+                    <p>{!! $result->getDescription() !!}</p>
+                </div>
+            @endforeach
+        </div>
+        <div class="search-result__col">
+            @foreach($results[1] as $result)
+                <div class="search-result__wrapper">
+                    <a href="{{ $result->getUrl() }}">{{ $result->getTitle() }}</a>
+                    <p>{!! $result->getDescription() !!}</p>
+                </div>
+            @endforeach
+        </div>
+    </main>
+</div>
