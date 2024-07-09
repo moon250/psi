@@ -40,10 +40,16 @@ class SearchService
         return $this->splitArray($results);
     }
 
+    /**
+     * @param  mixed[]  $array
+     * @return mixed[]
+     */
     private function splitArray(array $array): array
     {
         $length = count($array);
+        /** @var positive-int $half */
+        $half = ceil($length / 2);
 
-        return array_chunk($array, ceil($length / 2));
+        return array_chunk($array, $half);
     }
 }

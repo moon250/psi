@@ -8,6 +8,9 @@ Psi is my personnal, home-made search engine. It features :
 - 📊 Built-in "telemetry" (Statistics about which engine's links you clicked on the most, or which website you used the most)
 - 🌗 Light (Atom One Light) and Dark (Tokyo Night) theme
 
+> [!NOTE]  
+> DuckDuckGo search seems to be currently way slower than Google's (~1s against ~.4s)
+
 ## 🔋 Technologies used
 - [Laravel](https://laravel.com)
 

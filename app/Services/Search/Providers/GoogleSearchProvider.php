@@ -2,19 +2,17 @@
 
 namespace App\Services\Search\Providers;
 
+use App\Services\FetchService;
 use App\Services\Search\SearchResult;
-use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
 class GoogleSearchProvider implements SearchProviderInterface
 {
     public function query(string $query): array
     {
-        $body = Http::withUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0')
-            ->get('https://www.google.com/search?q=' . urlencode($query))
-            ->body();
-
-        return $this->toResult($body);
+        return $this->toResult(
+            FetchService::fetch('https://www.google.com/search?q=' . urlencode($query))
+        );
     }
 
     /**
@@ -30,7 +28,7 @@ class GoogleSearchProvider implements SearchProviderInterface
         $results->each(function (Crawler $node) use (&$resultList) {
             $title = $node->filter('h3')->first();
 
-            // Mind the case where there is no description
+            // Used for the case where there is no description
             // Mostly happens when the result is a youtube video
             if (($description = $node->filter('.VwiC3b'))->count() === 0) {
                 return;

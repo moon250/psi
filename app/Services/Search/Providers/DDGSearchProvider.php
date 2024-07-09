@@ -2,19 +2,17 @@
 
 namespace App\Services\Search\Providers;
 
+use App\Services\FetchService;
 use App\Services\Search\SearchResult;
-use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 
 class DDGSearchProvider implements SearchProviderInterface
 {
     public function query(string $query): array
     {
-        $body = Http::withUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0')
-            ->get('https://html.duckduckgo.com/html/search?q=' . urlencode($query))
-            ->body();
-
-        return $this->toResult($body);
+        return $this->toResult(
+            FetchService::fetch('https://html.duckduckgo.com/html/search?q=' . urlencode($query))
+        );
     }
 
     /**

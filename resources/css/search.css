@@ -1,9 +1,11 @@
 .search__wrapper {
     padding: 24px 32px;
+    display: grid;
+    gap: 32px;
 }
 
 .search-result__col {
-    margin: 24px;
+    margin-inline: 24px;
 }
 
 .search-result__wrapper a {

@@ -16,11 +16,13 @@ class SearchController
         $response = $service->search($query);
 
         if (is_array($response)) {
-            $results = $response;
-
-            return view('search', compact('query', 'results'));
+            return view('search', [
+                'query' => $query,
+                'results' => $response,
+            ]);
         }
 
+        // The answer is not the result of the providers. It is necessarily a redirection from a bang
         return $response;
     }
 }
