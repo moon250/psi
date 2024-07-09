@@ -1,6 +1,7 @@
 @extends('template')
 @section('title'){{ $query }}@endsection
 
+@section('body')
 <div class="search__wrapper">
     <div class="search__form">
         <a href="/">
@@ -30,3 +31,4 @@
         </div>
     </main>
 </div>
+@endsection
