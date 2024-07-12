@@ -24,6 +24,13 @@ class BangService
         '!meteo' => 'https://www.meteociel.fr/prevville.php?action=getville&ville=%s',
     ];
 
+    public function __construct()
+    {
+        // Mandatory because we loop over the bangs in order. It fixes this example key order : "!g", "!gi"
+        // "!g" would be matched first even though it should match "!gi"
+        uksort($this->redirectBangs, fn ($a, $b) => mb_strlen($b) <=> mb_strlen($a));
+    }
+
     public function hasBang(string $query): string|false
     {
         foreach (array_keys($this->redirectBangs) as $bang) {
