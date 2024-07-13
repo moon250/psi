@@ -1,6 +1,9 @@
 h1 {
     font-size: 72px;
     color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 h1 > svg {
