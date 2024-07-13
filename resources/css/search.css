@@ -12,6 +12,28 @@
     text-decoration: none;
 }
 
+.search-result__title {
+    display: grid;
+    grid-template-columns: minmax(auto, max-content) 16px;
+    place-items: center;
+    gap: 8px;
+}
+
+.search-result__title:hover svg {
+    opacity: 1;
+}
+
+.search-result__title svg {
+    opacity: 0;
+    cursor: pointer;
+    color: var(--bright-red);
+    transition: .1s all;
+}
+
+.search-result__title svg:hover {
+    color: var(--red);
+}
+
 .search-result__wrapper {
     width: calc(50vw - 64px);
     display: grid;

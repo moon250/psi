@@ -7,7 +7,8 @@
     <title>@yield('title', 'Psi')</title>
 
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    @vite('resources/css/app.css')
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     @yield("body")

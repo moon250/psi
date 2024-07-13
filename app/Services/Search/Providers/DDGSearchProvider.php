@@ -2,12 +2,17 @@
 
 namespace App\Services\Search\Providers;
 
+use App\Services\BlacklistService;
 use App\Services\FetchService;
 use App\Services\Search\SearchResult;
 use Symfony\Component\DomCrawler\Crawler;
 
 class DDGSearchProvider implements SearchProviderInterface
 {
+    public function __construct(
+        private readonly BlacklistService $blacklistService
+    ) {}
+
     public function query(string $query): array
     {
         return $this->toResult(
@@ -33,12 +38,19 @@ class DDGSearchProvider implements SearchProviderInterface
                 return;
             }
 
-            $resultList[] = new SearchResult(
-                title: $title->innerText(),
-                description: $description->html(),
-                url: $title->attr('href') ?? '',
-                provider: 'ddg'
-            );
+            $link = $title->attr('href') ?? '';
+            /** @var string $host */
+            $host = parse_url($link, PHP_URL_HOST);
+
+            if (!$this->blacklistService->exists($host)) {
+                $resultList[] = new SearchResult(
+                    title: $title->innerText(),
+                    description: $description->html(),
+                    url: $link,
+                    provider: 'ddg',
+                    website: $host
+                );
+            }
         });
 
         return $resultList;

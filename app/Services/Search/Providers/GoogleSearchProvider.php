@@ -2,12 +2,17 @@
 
 namespace App\Services\Search\Providers;
 
+use App\Services\BlacklistService;
 use App\Services\FetchService;
 use App\Services\Search\SearchResult;
 use Symfony\Component\DomCrawler\Crawler;
 
 class GoogleSearchProvider implements SearchProviderInterface
 {
+    public function __construct(
+        private readonly BlacklistService $blacklistService
+    ) {}
+
     public function query(string $query): array
     {
         return $this->toResult(
@@ -35,13 +40,18 @@ class GoogleSearchProvider implements SearchProviderInterface
             }
 
             $link = $node->filter('a')->attr('href') ?? '';
+            /** @var string $host */
+            $host = parse_url($link, PHP_URL_HOST);
 
-            $resultList[] = new SearchResult(
-                title: $title->innerText(),
-                description: $description->html(),
-                url: $link,
-                provider: 'google'
-            );
+            if (!$this->blacklistService->exists($host)) {
+                $resultList[] = new SearchResult(
+                    title: $title->innerText(),
+                    description: $description->html(),
+                    url: $link,
+                    provider: 'google',
+                    website: $host
+                );
+            }
         });
 
         return $resultList;

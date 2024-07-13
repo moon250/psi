@@ -9,6 +9,7 @@ readonly class SearchResult
         private string $description,
         private string $url,
         private string $provider,
+        private string $website,
     ) {}
 
     public function getTitle(): string
@@ -29,5 +30,10 @@ readonly class SearchResult
     public function getProvider(): string
     {
         return $this->provider;
+    }
+
+    public function getWebsite(): string
+    {
+        return $this->website;
     }
 }
