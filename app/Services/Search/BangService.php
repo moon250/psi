@@ -29,6 +29,9 @@ class BangService
         // Reddit
         '!reddit' => 'https://www.reddit.com/search/?q=%s',
         '!r' => 'https://www.reddit.com/search?q=%s',
+
+        '!caniuse' => 'https://caniuse.com/?search=%s',
+        '!ciu' => 'https://caniuse.com/?search=%s',
     ];
 
     public function __construct()

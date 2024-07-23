@@ -1,0 +1,25 @@
+.modal__wrapper[open=""] {
+    display: grid;
+    gap: 16px;
+
+    margin: auto;
+    padding: 32px;
+    border: var(--bright-black) solid 2px;
+    background: var(--background);
+}
+
+.modal__wrapper::backdrop {
+    background-color: var(--black);
+    opacity: .3;
+}
+
+.modal__actions {
+    display: flex;
+    gap: 16px;
+}
+
+.modal__actions button {
+    flex: 1;
+
+
+}

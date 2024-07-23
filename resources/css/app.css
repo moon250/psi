@@ -5,6 +5,7 @@
 
 @import "home.css";
 @import "search.css";
+@import "modal.css";
 
 body {
     background-color: var(--background);
