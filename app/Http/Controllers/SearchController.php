@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\RedirectlistService;
 use App\Services\Search\SearchService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -9,9 +10,13 @@ use Illuminate\View\View;
 
 class SearchController
 {
-    public function index(Request $request, SearchService $service): View|RedirectResponse
+    public function index(Request $request, SearchService $service, RedirectlistService $redirectlistService): View|RedirectResponse
     {
         $query = $request->get('q');
+
+        if ($redirectlistService->exists($query)) {
+            return new RedirectResponse("https://$query");
+        }
 
         $response = $service->search($query);
 

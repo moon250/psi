@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\BlacklistService;
+use App\Services\RedirectlistService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class BlacklistController extends Controller
+class RedirectlistController extends Controller
 {
-    public function __construct(private readonly BlacklistService $service) {}
+    public function __construct(private readonly RedirectlistService $service) {}
 
     public function index(): Response
     {

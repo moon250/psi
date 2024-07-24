@@ -6,11 +6,12 @@
     padding: 32px;
     border: var(--bright-black) solid 2px;
     background: var(--background);
+    color: var(--text);
 }
 
 .modal__wrapper::backdrop {
     background-color: var(--black);
-    opacity: .3;
+    opacity: .6;
 }
 
 .modal__actions {
@@ -20,6 +21,4 @@
 
 .modal__actions button {
     flex: 1;
-
-
 }
