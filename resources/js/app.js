@@ -6,6 +6,14 @@ const modal = document.querySelector('.modal__wrapper');
 const form = document.querySelector('.search-form__wrapper');
 const input = form.querySelector('input');
 
+if (localStorage.getItem('redirect_list') === null) {
+    fetch('/api/redirectlist', {
+        method: 'GET'
+    }).then(async res => {
+        localStorage.setItem('redirect_list', JSON.stringify(await res.json()));
+    })
+}
+
 window.blacklist = async (website) => {
     await fetch('/api/blacklist', {
         method: 'POST',
