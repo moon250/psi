@@ -6,10 +6,15 @@ use App\Services\Search\SearchResult;
 
 interface SearchProviderInterface
 {
+    const string name = '';
+
     /**
-     * Perform a search on the searching provider
-     *
+     * Returns the url querying the query on the provider
+     */
+    public function query(string $query): string;
+
+    /**
      * @return SearchResult[]
      */
-    public function query(string $query): array;
+    public function toResult(string $page): array;
 }

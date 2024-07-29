@@ -30,6 +30,7 @@ class BangService
         '!reddit' => 'https://www.reddit.com/search/?q=%s',
         '!r' => 'https://www.reddit.com/search?q=%s',
 
+        // Can I use
         '!caniuse' => 'https://caniuse.com/?search=%s',
         '!ciu' => 'https://caniuse.com/?search=%s',
     ];

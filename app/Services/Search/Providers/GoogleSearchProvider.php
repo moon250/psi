@@ -3,7 +3,6 @@
 namespace App\Services\Search\Providers;
 
 use App\Services\BlacklistService;
-use App\Services\FetchService;
 use App\Services\Search\SearchResult;
 use Symfony\Component\DomCrawler\Crawler;
 
@@ -13,11 +12,11 @@ class GoogleSearchProvider implements SearchProviderInterface
         private readonly BlacklistService $blacklistService
     ) {}
 
-    public function query(string $query): array
+    const string name = 'google';
+
+    public function query(string $query): string
     {
-        return $this->toResult(
-            FetchService::fetch('https://www.google.com/search?q=' . urlencode($query))
-        );
+        return 'https://www.google.com/search?q=' . urlencode($query);
     }
 
     /**

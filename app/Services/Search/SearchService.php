@@ -2,9 +2,13 @@
 
 namespace App\Services\Search;
 
+use App\Services\FetchService;
 use App\Services\Search\Providers\DDGSearchProvider;
 use App\Services\Search\Providers\GoogleSearchProvider;
+use Illuminate\Http\Client\Pool;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 class SearchService
 {
@@ -12,8 +16,8 @@ class SearchService
      * @var string[]
      */
     private array $providers = [
-        GoogleSearchProvider::class,
-        DDGSearchProvider::class,
+        'google' => GoogleSearchProvider::class,
+        'ddg' => DDGSearchProvider::class,
     ];
 
     public function __construct(
@@ -21,35 +25,25 @@ class SearchService
     ) {}
 
     /**
-     * @return array<int, SearchResult[]> | RedirectResponse
+     * @return Collection<int, Collection<int, SearchResult>> | RedirectResponse
      */
-    public function search(string $query): array|RedirectResponse
+    public function search(string $query): Collection|RedirectResponse
     {
-        $results = [];
-
         if ($bang = $this->bangService->hasBang($query)) {
             return $this->bangService->fireBang($query, $bang);
         }
 
-        foreach ($this->providers as $provider) {
-            $provider = app($provider);
+        $responses = Http::pool(function (Pool $pool) use ($query) {
+            return collect($this->providers)
+                ->map(fn ($provider) => FetchService::fetch($pool, $query, app($provider)));
+        });
 
-            $results = array_merge($results, $provider->query($query));
-        }
+        /** @var Collection<int, Collection<int, SearchResult>> $results */
+        $results = collect($responses)
+            ->map(fn ($response, $provider) => app($this->providers[$provider])->toResult($response->body()))
+            ->flatten()
+            ->split(2);
 
-        return $this->splitArray($results);
-    }
-
-    /**
-     * @param  mixed[]  $array
-     * @return mixed[]
-     */
-    private function splitArray(array $array): array
-    {
-        $length = count($array);
-        /** @var positive-int $half */
-        $half = ceil($length / 2);
-
-        return array_chunk($array, $half);
+        return $results;
     }
 }

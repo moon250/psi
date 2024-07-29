@@ -6,6 +6,7 @@ use App\Services\RedirectlistService;
 use App\Services\Search\SearchService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 class SearchController
@@ -20,7 +21,7 @@ class SearchController
 
         $response = $service->search($query);
 
-        if (is_array($response)) {
+        if ($response instanceof Collection) {
             return view('search', [
                 'query' => $query,
                 'results' => $response,
