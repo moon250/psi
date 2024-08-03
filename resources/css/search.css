@@ -61,3 +61,7 @@
     height: 32px;
     color: var(--text);
 }
+
+.search-form__wrapper input {
+    background-color: var(--background);
+}

@@ -2,6 +2,8 @@ import.meta.glob([
     '../fonts/**',
 ]);
 
+import "./unsplash.js"
+
 const modal = document.querySelector('.modal__wrapper');
 const form = document.querySelector('.search-form__wrapper');
 const input = form.querySelector('input');

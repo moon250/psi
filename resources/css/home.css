@@ -12,10 +12,26 @@ h1 > svg {
 
 .home-page__search {
     height: 100vh;
-
     display: flex;
     gap: 64px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    background-color: var(--background);
+    background-image: var(--unsplash-image);
+    background-position: center;
+    background-size: cover;
+}
+
+.home-page__search::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--background);
+    opacity: .7;
+}
+
+.home-page__search > * {
+    z-index: 50;
 }
