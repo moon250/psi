@@ -4,13 +4,13 @@ Psi is my personnal, home-made search engine. It features :
 - 🇬 Google search
 - 🦆 Duckduckgo search
 - 🚫 Website blacklisting
-- 🔫 [Bangs](https://duckduckgo.com/bangs) (For example : "cute cats !g" redirects you to google while searching for cute cat pictures)
+- 🔫 [Bangs](https://github.com/moon250/psi/blob/master/app/Services/Search/BangService.php#L12) (For example : "cute cats !g" redirects you to google while searching for cute cat pictures)
 - 📊 Built-in "telemetry" (Statistics about which engine's links you clicked on the most, or which website you used the most)
 - 🌗 Light (Atom One Light) and Dark (Tokyo Night) theme
 
 > [!NOTE]  
-> DuckDuckGo search seems to be currently way slower than Google's (~1s against ~.5s)
-> You may disable completely DDG search by commenting the corresponding provider in the [SearchService](https://github.com/moon250/psi/blob/013c391582a58f495200456823e881102ce0d747/app/Services/Search/SearchService.php#L14)
+> DuckDuckGo search seems to be currently way slower than Google's (~1s against ~.5s).
+> You may disable completely DDG search by commenting the corresponding provider in the [SearchService](https://github.com/moon250/psi/blob/master/app/Services/Search/SearchService.php#L18)
 
 ## 🔋 Technologies used
 - [Laravel](https://laravel.com)
