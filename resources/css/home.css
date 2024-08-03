@@ -35,3 +35,10 @@ h1 > svg {
 .home-page__search > * {
     z-index: 50;
 }
+
+.home-page__unsplash-text {
+    font-size: 14px;
+    position: absolute;
+    bottom: 16px;
+    right: 24px;
+}

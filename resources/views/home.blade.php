@@ -9,5 +9,8 @@
             Psi
         </h1>
         <x-search-form />
+        <div class="home-page__unsplash-text">
+            <p>Photo by <a id="unsplash__author"></a> on <a href="https://unsplash.com">Unsplash</a></p>
+        </div>
     </main>
 @endsection
