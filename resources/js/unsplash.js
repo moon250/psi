@@ -3,13 +3,26 @@ const set = Object.keys(stored).length > 0
 const expired = set && Date.now() - stored.requested_at > 60 * 1000
 const author = document.getElementById("unsplash__author")
 
+const collections = [
+    'bo8jQKTaE0Y', // Wallpapers
+    'BJJMtteDJA4', // Current events
+    'rnSKDHwwYUk', // Architecture
+    '6sMVjTLSkeQ', // Nature
+    'xHxYTMHLgOc', // Street photography
+    'Fzo3zuOHN6w', // Travels
+    'Jpg6Kidl-Hk', // Animals
+    'bDo48cUhwnY', // Arts & culture
+    'dijpbw99kQQ', // History
+    'M8jVbLbTRws', // Architecture & interior
+]
+
 let res = {}
 
 // If we are on the home page
 if (author) {
     if (!set || (set && expired)) {
         res = await fetch(
-            `https://api.unsplash.com/photos/random?orientation=landscape`,
+            `https://api.unsplash.com/photos/random?collections=${collections.join(',')}?orientation=landscape`,
             {
                 method: 'GET',
                 headers: {
@@ -30,5 +43,11 @@ if (author) {
 
     document.body.style.setProperty('--unsplash-image', `url(${res.urls.regular})`)
     author.innerText = res.user.name
-    author.href = res.user.links.html
+    author.href = res.user.links.photos
+}
+
+
+window.reloadUnsplash = () => {
+    localStorage.removeItem('unsplash')
+    location.reload()
 }

@@ -37,8 +37,14 @@ h1 > svg {
 }
 
 .home-page__unsplash-text {
+    display: flex;
+    gap: 8px;
     font-size: 14px;
     position: absolute;
     bottom: 16px;
     right: 24px;
+}
+
+.home-page__unsplash-text svg {
+    cursor: pointer;
 }
