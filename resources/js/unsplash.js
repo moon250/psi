@@ -43,7 +43,7 @@ if (author) {
 
     document.body.style.setProperty('--unsplash-image', `url(${res.urls.regular})`)
     author.innerText = res.user.name
-    author.href = res.user.links.photos
+    author.href = res.user.links.html
 }
 
 
