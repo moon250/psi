@@ -20,7 +20,7 @@ let res = {}
 
 // If we are on the home page
 if (author) {
-    if (!set || (set && expired)) {
+    if (!set || expired) {
         res = await fetch(
             `https://api.unsplash.com/photos/random?collections=${collections.join(',')}?orientation=landscape`,
             {
