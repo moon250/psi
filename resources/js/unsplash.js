@@ -5,7 +5,7 @@ const author = document.getElementById("unsplash__author")
 
 const collections = [
     'bo8jQKTaE0Y', // Wallpapers
-    'BJJMtteDJA4', // Current events
+    '46022299', // Oceans
     'rnSKDHwwYUk', // Architecture
     '6sMVjTLSkeQ', // Nature
     'xHxYTMHLgOc', // Street photography

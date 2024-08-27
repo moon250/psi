@@ -21,4 +21,14 @@
 
 .modal__actions button {
     flex: 1;
+    color: var(--text);
+    background: none;
+    border: 2px solid var(--bright-black);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.modal__actions button:hover {
+    background-color: var(--hover);
 }

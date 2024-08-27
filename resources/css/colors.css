@@ -25,6 +25,7 @@
         --text: var(--bright-white);
         --link: var(--bright-blue);
         --link-visited: var(--purple);
+        --hover: var(--bright-black);
     }
 }
 
@@ -33,7 +34,7 @@
         /* Atom One Light color scheme */
         --background: #F9F9F9;
         --foreground: #383A42;
-        --selection-background: #383F48;
+        --selection-background: #E5E5E6;
 
         --black: #000000;
         --bright-black: #383A42;
@@ -55,5 +56,6 @@
         --text: var(--bright-black);
         --link: var(--bright-blue);
         --link-visited: var(--purple);
+        --hover: var(--bright-white);
     }
 }
