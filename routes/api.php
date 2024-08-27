@@ -4,7 +4,6 @@ use App\Http\Controllers\BlacklistController;
 use App\Http\Controllers\RedirectlistController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/blacklist', [BlacklistController::class, 'index']);
 Route::post('/blacklist', [BlacklistController::class, 'store']);
 Route::delete('/blacklist', [BlacklistController::class, 'remove']);
 

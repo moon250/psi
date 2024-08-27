@@ -1,0 +1,21 @@
+.quicklinks {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    z-index: 2;
+}
+
+
+.quicklinks a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--text);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.quicklinks a:visited {
+    color: var(--text);
+}

@@ -3,9 +3,12 @@
 @import "colors.css";
 @import "fonts.css";
 
-@import "home.css";
-@import "search.css";
+@import "pages/home.css";
+@import "pages/search.css";
+@import "pages/blacklist.css";
+
 @import "modal.css";
+@import "quicklinks.css";
 
 body {
     background-color: var(--background);

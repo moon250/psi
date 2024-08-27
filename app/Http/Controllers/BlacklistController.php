@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Services\BlacklistService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class BlacklistController extends Controller
 {
     public function __construct(private readonly BlacklistService $service) {}
 
-    public function index(): Response
+    public function index(): View
     {
-        return response($this->service->get());
+        return view('blacklist', ['blacklist' => $this->service->get()]);
     }
 
     public function store(Request $request): Response

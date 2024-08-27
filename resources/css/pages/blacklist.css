@@ -1,0 +1,53 @@
+.blacklist__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 32px;
+}
+
+.blacklist__wrapper a {
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blacklist__wrapper a:visited {
+    color: var(--text);
+}
+
+.blacklist__wrapper h2 {
+    font-size: 32px;
+}
+
+.blacklist__table {
+    align-self: center;
+    width: 90%;
+    border-collapse: collapse
+}
+
+.blacklist__table tr {
+    height: 32px;
+}
+
+.blacklist__table thead tr, .blacklist__table tbody tr:not(:last-child) {
+    border-bottom: 1px solid var(--text);
+}
+
+.blacklist__table td:nth-child(1) {
+    padding-left: 16px;
+}
+
+.blacklist__table td:nth-child(2) {
+    text-align: center;
+}
+
+.blacklist__action-delete {
+    cursor: pointer;
+    transition: .1s all;
+}
+
+.blacklist__action-delete:hover {
+    color: var(--red)
+}
