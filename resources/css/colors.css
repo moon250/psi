@@ -23,6 +23,7 @@
         --bright-white: #C0CAF5;
 
         --text: var(--bright-white);
+        --text-muted: #C0CAF580;
         --link: var(--bright-blue);
         --link-visited: var(--purple);
         --hover: var(--bright-black);
@@ -54,6 +55,7 @@
         --bright-white: #F2F2F2;
 
         --text: var(--bright-black);
+        --text-muted: #383A4280;
         --link: var(--bright-blue);
         --link-visited: var(--purple);
         --hover: var(--bright-white);

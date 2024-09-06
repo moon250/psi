@@ -44,11 +44,11 @@ input::placeholder {
     font-weight: bold;
 }
 
-a:hover, .search-result__link:hover {
+a:hover {
     text-decoration: underline;
 }
 
-a, .search-result__link {
+a {
     color: var(--link);
 }
 

@@ -13,8 +13,7 @@
 }
 
 .search-result__title {
-    display: grid;
-    grid-template-columns: minmax(auto, max-content) 16px;
+    display: flex;
     place-items: center;
     gap: 8px;
 }
@@ -37,13 +36,24 @@
 .search-result__wrapper {
     width: calc(50vw - 64px);
     display: grid;
-    gap: 8px;
+    gap: 4px;
     margin-bottom: 24px;
     color: var(--text);
 }
 
 .search-result__link {
-    color: inherit;
+    display: flex;
+    gap: 8px;
+}
+
+.search-result__title img {
+    height: 24px;
+    aspect-ratio: 1;
+}
+
+.search-result__website {
+    color: var(--text-muted);
+    font-size: 14px;
 }
 
 .search-result__wrapper, .search-result__wrapper:hover {
