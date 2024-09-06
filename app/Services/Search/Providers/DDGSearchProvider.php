@@ -38,6 +38,10 @@ class DDGSearchProvider implements SearchProviderInterface
             }
 
             $link = $title->attr('href') ?? '';
+            // Remove ddg proxy thing (allows for easier favicon retrieving)
+            $link = str_replace('//duckduckgo.com/l/?uddg=', '', $link);
+            $link = urldecode($link);
+
             /** @var string $host */
             $host = parse_url($link, PHP_URL_HOST);
 

@@ -1,6 +1,6 @@
 <div class="search-result__wrapper" data-website="{{ $result->getWebsite() }}">
     <div class="search-result__title">
-        <img src="https://{{ $result->getWebsite() }}/favicon.ico" alt="">
+        <img src="https://icons.duckduckgo.com/ip2/{{ $result->getWebsite() }}.ico" alt="">
         <div>
             <a href="{{ $result->getUrl() }}" class="search-result__link">
                 {{ $result->getTitle() }}
