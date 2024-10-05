@@ -2,6 +2,7 @@ const stored = JSON.parse(localStorage.getItem('unsplash') ?? '{}')
 const set = Object.keys(stored).length > 0
 const expired = set && Date.now() - stored.requested_at > 60 * 1000
 const author = document.getElementById("unsplash__author")
+const indicator = document.querySelector(".home-page__search")
 
 const collections = [
     'bo8jQKTaE0Y', // Wallpapers
@@ -29,7 +30,7 @@ if (author) {
                     Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_ACCESS_KEY}`
                 }
             }
-        )
+        ).catch(() => indicator.dataset.enabled = true)
 
         res = await res.json()
 

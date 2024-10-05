@@ -48,3 +48,25 @@ h1 > svg {
 .home-page__unsplash-text svg {
     cursor: pointer;
 }
+
+.home-page__internet-indicator {
+    position: absolute;
+    top: 48px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-weight: bold;
+    background-color: var(--background);
+    padding: 16px 24px;
+    border-radius: 50px;
+    border: var(--foreground) solid 2px;
+    opacity: 0;
+}
+
+.home-page__search[data-enabled="true"] .home-page__internet-indicator {
+    opacity: 1;
+}
+
+.home-page__search[data-enabled="true"] .home-page__unsplash-text {
+    opacity: 0;
+}
