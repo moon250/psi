@@ -33,19 +33,14 @@ class BangService
         // Can I use
         '!caniuse' => 'https://caniuse.com/?search=%s',
         '!ciu' => 'https://caniuse.com/?search=%s',
-    ];
 
-    public function __construct()
-    {
-        // Mandatory because we loop over the bangs in order. It fixes this example key order : "!g", "!gi"
-        // "!g" would match first even though it should match "!gi"
-        uksort($this->redirectBangs, fn ($a, $b) => mb_strlen($b) <=> mb_strlen($a));
-    }
+        '!php' => 'https://www.php.net/manual-lookup.php?pattern=%s&scope=quickref',
+    ];
 
     public function hasBang(string $query): string|false
     {
         foreach (array_keys($this->redirectBangs) as $bang) {
-            if (str_contains($query, $bang)) {
+            if (preg_match("/\w*{$bang} $/", $query . ' ')) {
                 return $bang;
             }
         }
@@ -59,6 +54,7 @@ class BangService
     public function fireBang(string $query, string $bang): RedirectResponse
     {
         $query = str_replace($bang, '', $query);
+        $query = trim($query);
 
         return new RedirectResponse(
             url: sprintf($this->redirectBangs[$bang], $query)
