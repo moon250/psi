@@ -11,6 +11,17 @@ Psi is my personnal, home-made search engine. It features :
 > DuckDuckGo search seems to be currently way slower than Google's (~1s against ~.5s).
 > You may disable completely DDG search by commenting the corresponding provider in the [SearchService](https://github.com/moon250/psi/blob/master/app/Services/Search/SearchService.php#L18)
 
+## How to use
+1. Clone this repo
+2. Build js files :
+```shell
+yarn build
+```
+3. Run docker container in the background :
+```shell
+docker-compose up -d --build
+```
+
 ## 🔋 Technologies used
 - [Laravel](https://laravel.com)
 
