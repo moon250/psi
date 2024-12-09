@@ -7,39 +7,103 @@ use Illuminate\Http\RedirectResponse;
 class BangService
 {
     /**
-     * @var string[]
+     * @var array<string, array{'url': string, 'name': string}>
      */
     private array $redirectBangs = [
-        '!g' => 'https://google.com/search?q=%s', // Google search
-        '!gh' => 'https://github.com/search?q=%s', // Github search
+        // Google search
+        '!g' => [
+            'name' => 'Google',
+            'url' => 'https://google.com/search?q=%s'
+        ],
+
+        // Github search
+        '!gh' => [
+            'name' => 'Github',
+            'url' => 'https://github.com/search?q=%s'
+        ],
 
         // Deepl translation
-        '!tr' => 'https://deepl.com/fr/translator#en/fr/%s',
-        '!deepl' => 'https://deepl.com/fr/translator#en/fr/%s',
+        '!deepl' => [
+            'name' => 'Deepl',
+            'url' => 'https://deepl.com/fr/translator#en/fr/%s'
+        ],
 
-        '!img' => 'https://duckduckgo.com/?q=%s&iax=images&ia=images', // DDG images
-        '!gi' => 'https://google.com/search?q=%s&udm=2', // Google Images
-        '!yt' => 'https://youtube.com/results?search_query=%s', // Youtube
+        // DDG images
+        '!img' => [
+            'name' => 'DuckDuckGo Images',
+            'url' => 'https://duckduckgo.com/?q=%s&iax=images&ia=images'
+        ],
+
+        // Google Images
+        '!gi' => [
+            'name' => 'Google Images',
+            'url' => 'https://google.com/search?q=%s&udm=2'
+        ],
+
+        // Youtube
+        '!yt' => [
+            'name' => 'Youtube',
+            'url' => 'https://youtube.com/results?search_query=%s'
+        ],
 
         // Google Maps
-        '!gmaps' => 'https://www.google.com/maps/preview?q=%s',
-        '!gm' => 'https://www.google.com/maps/preview?q=%s',
-        '!meteo' => 'https://www.meteociel.fr/prevville.php?action=getville&ville=%s',
+        '!gmaps' => [
+            'name' => 'Google Maps',
+            'url' => 'https://www.google.com/maps/preview?q=%s'
+        ],
+
+        '!meteo' => [
+            'name' => 'Meteociel',
+            'url' => 'https://www.meteociel.fr/prevville.php?action=getville&ville=%s',
+        ],
 
         // Reddit
-        '!reddit' => 'https://www.reddit.com/search/?q=%s',
-        '!r' => 'https://www.reddit.com/search?q=%s',
+        '!reddit' => [
+            'name' => 'Reddit',
+            'url' => 'https://www.reddit.com/search/?q=%s',
+        ],
 
         // Can I use
-        '!caniuse' => 'https://caniuse.com/?search=%s',
-        '!ciu' => 'https://caniuse.com/?search=%s',
+        '!caniuse' => [
+            'name' => 'CanIUse',
+            'url' => 'https://caniuse.com/?search=%s',
+        ],
 
-        '!php' => 'https://www.php.net/manual-lookup.php?pattern=%s&scope=quickref',
+        '!php' => [
+            'name' => 'PHP',
+            'url' => 'https://www.php.net/manual-lookup.php?pattern=%s&scope=quickref',
+        ],
+
+        '!wiki' => [
+            'name' => 'Wikipedia',
+            'url' => 'https://fr.wikipedia.org/w/index.php?search=%s',
+        ],
     ];
+
+    /**
+     * @var string[]
+     */
+    private array $bangAliases = [
+        '!deepl' => '!tr',
+        '!reddit' => '!r',
+        '!caniuse' => '!ciu',
+        '!wiki' => '!wikipedia',
+    ];
+
+    /**
+     * @var string[]
+     */
+    public array $bangs {
+        get {
+            $bangList = collect($this->redirectBangs);
+            $aliases = collect($this->bangAliases);
+            return array_merge($bangList->keys()->all(), $aliases->values()->all());
+        }
+    }
 
     public function hasBang(string $query): string|false
     {
-        foreach (array_keys($this->redirectBangs) as $bang) {
+        foreach ($this->bangs as $bang) {
             if (preg_match("/\w*{$bang} $/", $query . ' ')) {
                 return $bang;
             }
@@ -57,7 +121,23 @@ class BangService
         $query = trim($query);
 
         return new RedirectResponse(
-            url: sprintf($this->redirectBangs[$bang], $query)
+            url: sprintf($this->redirectBangs[$bang]['url'], $query)
         );
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getBangs(): array
+    {
+        $bangList = collect($this->redirectBangs);
+
+        foreach ($this->bangAliases as $bang => $alias) {
+            $aliasBangData = $bangList->get($bang);
+            if (!$aliasBangData) continue;
+            $bangList->put($alias, $aliasBangData);
+        }
+
+        return $bangList->toArray();
     }
 }
