@@ -3,18 +3,17 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "^8.3",
-        "laravel/framework": "^11.9",
+        "php": "^8.4",
+        "laravel/framework": "^11.15",
         "symfony/css-selector": "^7.1",
         "symfony/dom-crawler": "^7.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",
-        "larastan/larastan": "^2.9",
+        "larastan/larastan": "^3",
         "laravel/pint": "^1.13",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
-        "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "^11.0.1"
     },
     "autoload": {
