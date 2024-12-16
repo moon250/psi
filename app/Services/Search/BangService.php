@@ -121,12 +121,12 @@ class BangService
         $query = trim($query);
 
         return new RedirectResponse(
-            url: sprintf($this->redirectBangs[$bang]['url'], $query)
+            url: sprintf($this->getBangs()[$bang]['url'], $query)
         );
     }
 
     /**
-     * @return string[]
+     * @return array<string, array{'url': string, 'name': string}>
      */
     public function getBangs(): array
     {
