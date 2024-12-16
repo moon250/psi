@@ -88,7 +88,6 @@ form.addEventListener('input', e => {
     if (query.length < 1) return
 
     const found = Object.keys(bangList).filter(bang => bang.includes(query))
-    console.log(found)
 
     for (const bang of found) {
         form.dataset.show = "true"
@@ -96,7 +95,7 @@ form.addEventListener('input', e => {
         const div = document.createElement('div')
         div.id = bang
         const favicon = document.createElement('img')
-        favicon.src = "https://icons.duckduckgo.com/ip2/google.com.ico"
+        favicon.src = `https://icons.duckduckgo.com/ip2/${data.url.split('/')[2].replace('www.', '')}.ico`
         div.appendChild(favicon)
         const name = document.createElement('p')
         name.textContent = `${bang} - ${data['name']}`
