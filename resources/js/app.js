@@ -81,17 +81,17 @@ form.addEventListener('submit', e => {
 form.addEventListener('input', e => {
     let query = e.target.value.split('!')
     bangDiv.replaceChildren()
-    input.dataset.bangs = "false"
-    bangDiv.dataset.show = "false"
+    form.dataset.show = "false"
 
     if (query.length < 2) return
     query = query[1]
     if (query.length < 1) return
 
     const found = Object.keys(bangList).filter(bang => bang.includes(query))
+    console.log(found)
 
     for (const bang of found) {
-        input.dataset.bangs = "true"
+        form.dataset.show = "true"
         const data = bangList[bang]
         const div = document.createElement('div')
         div.id = bang
@@ -102,7 +102,6 @@ form.addEventListener('input', e => {
         name.textContent = `${bang} - ${data['name']}`
         div.appendChild(name)
         bangDiv.appendChild(div)
-        bangDiv.dataset.show = "true"
     }
 })
 

@@ -1,6 +1,7 @@
-<form method="GET" action="/search" class="search-form__wrapper">
-    <input placeholder="Search" autofocus type="text" name="q" id="q" value="{{ $query ?? '' }}" autocomplete="off" data-bangs="false">
-    <div class="search-form__bangs" data-show="false">
+<form method="GET" action="/search" class="search-form__wrapper" data-show="false">
+    <input placeholder="Search" autofocus type="text" name="q" id="q" value="{{ $query ?? '' }}" autocomplete="off">
+    <hr>
+    <div class="search-form__bangs">
     </div>
 </form>
 
