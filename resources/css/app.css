@@ -59,3 +59,12 @@ a:visited {
 .flex {
     display: flex;
 }
+
+a.text {
+    color: var(--text);
+    text-decoration: none;
+}
+
+a.text:visited {
+    color: var(--text);
+}

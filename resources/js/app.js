@@ -93,6 +93,7 @@ form.addEventListener('input', e => {
         form.dataset.show = "true"
         const data = bangList[bang]
         const link = document.createElement('a')
+        link.classList.add('text')
         link.id = bang
         link.href = encodeURI(`/search?q=${e.target.value.split('!')[0]}  ${bang}`)
         const favicon = document.createElement('img')
