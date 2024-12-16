@@ -92,15 +92,16 @@ form.addEventListener('input', e => {
     for (const bang of found) {
         form.dataset.show = "true"
         const data = bangList[bang]
-        const div = document.createElement('div')
-        div.id = bang
+        const link = document.createElement('a')
+        link.id = bang
+        link.href = encodeURI(`/search?q=${e.target.value.split('!')[0]}  ${bang}`)
         const favicon = document.createElement('img')
         favicon.src = `https://icons.duckduckgo.com/ip2/${data.url.split('/')[2].replace('www.', '')}.ico`
-        div.appendChild(favicon)
+        link.appendChild(favicon)
         const name = document.createElement('p')
         name.textContent = `${bang} - ${data['name']}`
-        div.appendChild(name)
-        bangDiv.appendChild(div)
+        link.appendChild(name)
+        bangDiv.appendChild(link)
     }
 })
 

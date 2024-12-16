@@ -107,21 +107,28 @@
     border-radius: 0 0 24px 24px;
     border: 1px solid var(--text);
     border-top: none;
-    padding: 16px;
-    gap: 16px;
+    padding: 8px;
 }
 
-.search-form__bangs > div {
+.search-form__bangs > a {
     display: flex;
     gap: 12px;
     align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--text);
 }
 
-.search-form__bangs > div img {
+.search-form__bangs > a:hover {
+    background-color: var(--hover);
+}
+
+.search-form__bangs > a img {
     height: 24px;
     aspect-ratio: 1;
 }
 
-.search-form__bangs > div p {
+.search-form__bangs > a p {
     font-weight: bold;
 }
