@@ -13,43 +13,43 @@ class BangService
         // Google search
         '!g' => [
             'name' => 'Google',
-            'url' => 'https://google.com/search?q=%s'
+            'url' => 'https://google.com/search?q=%s',
         ],
 
         // Github search
         '!gh' => [
             'name' => 'Github',
-            'url' => 'https://github.com/search?q=%s'
+            'url' => 'https://github.com/search?q=%s',
         ],
 
         // Deepl translation
         '!deepl' => [
             'name' => 'Deepl',
-            'url' => 'https://deepl.com/fr/translator#en/fr/%s'
+            'url' => 'https://deepl.com/fr/translator#en/fr/%s',
         ],
 
         // DDG images
         '!img' => [
             'name' => 'DuckDuckGo Images',
-            'url' => 'https://duckduckgo.com/?q=%s&iax=images&ia=images'
+            'url' => 'https://duckduckgo.com/?q=%s&iax=images&ia=images',
         ],
 
         // Google Images
         '!gi' => [
             'name' => 'Google Images',
-            'url' => 'https://google.com/search?q=%s&udm=2'
+            'url' => 'https://google.com/search?q=%s&udm=2',
         ],
 
         // Youtube
         '!yt' => [
             'name' => 'Youtube',
-            'url' => 'https://youtube.com/results?search_query=%s'
+            'url' => 'https://youtube.com/results?search_query=%s',
         ],
 
         // Google Maps
         '!gmaps' => [
             'name' => 'Google Maps',
-            'url' => 'https://www.google.com/maps/preview?q=%s'
+            'url' => 'https://www.google.com/maps/preview?q=%s',
         ],
 
         '!meteo' => [
@@ -95,10 +95,11 @@ class BangService
      */
     public array $bangs {
         get {
-            $bangList = collect($this->redirectBangs);
-            $aliases = collect($this->bangAliases);
-            return array_merge($bangList->keys()->all(), $aliases->values()->all());
-        }
+        $bangList = collect($this->redirectBangs);
+        $aliases = collect($this->bangAliases);
+
+        return array_merge($bangList->keys()->all(), $aliases->values()->all());
+    }
     }
 
     public function hasBang(string $query): string|false
@@ -118,7 +119,7 @@ class BangService
     public function fireBang(string $query, string $bang): RedirectResponse
     {
         $query = str_replace($bang, '', $query);
-        $query = trim($query);
+        $query = mb_trim($query);
 
         return new RedirectResponse(
             url: sprintf($this->getBangs()[$bang]['url'], $query)
@@ -134,7 +135,9 @@ class BangService
 
         foreach ($this->bangAliases as $bang => $alias) {
             $aliasBangData = $bangList->get($bang);
-            if (!$aliasBangData) continue;
+            if (!$aliasBangData) {
+                continue;
+            }
             $bangList->put($alias, $aliasBangData);
         }
 

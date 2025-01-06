@@ -87,7 +87,10 @@ form.addEventListener('input', e => {
     query = query[1]
     if (query.length < 1) return
 
-    const found = Object.keys(bangList).filter(bang => bang.includes(query))
+    let found = Object.keys(bangList).filter(bang => bang.includes(query))
+
+    // Only keep 4 results to avoid taking too much space
+    found = found.slice(0, 4)
 
     for (const bang of found) {
         form.dataset.show = "true"
