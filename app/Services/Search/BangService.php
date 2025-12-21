@@ -95,11 +95,11 @@ class BangService
      */
     public array $bangs {
         get {
-        $bangList = collect($this->redirectBangs);
-        $aliases = collect($this->bangAliases);
+            $bangList = collect($this->redirectBangs);
+            $aliases = collect($this->bangAliases);
 
-        return array_merge($bangList->keys()->all(), $aliases->values()->all());
-    }
+            return array_merge($bangList->keys()->all(), $aliases->values()->all());
+        }
     }
 
     public function hasBang(string $query): string|false

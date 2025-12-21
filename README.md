@@ -8,11 +8,14 @@ Psi is my personnal, home-made search engine. It features :
 - 🌗 Light (Atom One Light) and Dark (Tokyo Night) theme
 
 > [!NOTE]  
-> DuckDuckGo search seems to be currently way slower than Google's (~1s against ~.5s).
-> You may disable completely DDG search by commenting the corresponding provider in the [SearchService](https://github.com/moon250/psi/blob/master/app/Services/Search/SearchService.php#L18)
+> Duckduckgo search may or may not work on your machine, depending if it flags you as a bot or not.
+> You may disable completely DDG search to improve performances by commenting the corresponding provider in the [SearchService](https://github.com/moon250/psi/blob/master/app/Services/Search/SearchService.php#L21)
 
 ## How to use
 1. Clone this repo
+```shell
+git clone https://github.com/moon250/psi
+```
 2. Build js files :
 ```shell
 yarn build

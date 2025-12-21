@@ -1,4 +1,4 @@
-FROM php:alpine
+FROM php:8.4-alpine
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
