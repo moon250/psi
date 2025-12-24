@@ -5,6 +5,7 @@ namespace App\Services\Search\Providers;
 use App\Services\BlacklistService;
 use App\Services\Search\SearchResult;
 use Symfony\Component\DomCrawler\Crawler;
+use Uri\Rfc3986\Uri;
 
 class DDGSearchProvider implements SearchProviderInterface
 {
@@ -40,20 +41,22 @@ class DDGSearchProvider implements SearchProviderInterface
             $link = $title->attr('href') ?? '';
             // Remove ddg proxy thing (allows for easier favicon retrieving)
             $link = str_replace('//duckduckgo.com/l/?uddg=', '', $link);
-            $link = urldecode($link);
+            $link = new Uri($link);
 
             /** @var string $host */
-            $host = parse_url($link, PHP_URL_HOST);
+            $host = $link->getHost();
 
-            if (!$this->blacklistService->exists($host)) {
-                $resultList[] = new SearchResult(
-                    title: $title->innerText(),
-                    description: $description->html(),
-                    url: $link,
-                    provider: 'ddg',
-                    website: $host
-                );
+            if ($this->blacklistService->exists($host)) {
+                return;
             }
+
+            $resultList[] = new SearchResult(
+                title: $title->innerText(),
+                description: $description->html(),
+                url: $link->toString(),
+                provider: 'ddg',
+                website: $host
+            );
         });
 
         return $resultList;

@@ -3,10 +3,11 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "^8.4",
-        "laravel/framework": "^11.15",
-        "symfony/css-selector": "^7.1",
-        "symfony/dom-crawler": "^7.1"
+        "php": "^8.5",
+        "laravel/framework": "^11.47",
+        "symfony/css-selector": "^7.4",
+        "symfony/dom-crawler": "^7.4",
+        "ext-uri": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

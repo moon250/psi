@@ -5,6 +5,7 @@ namespace App\Services\Search\Providers;
 use App\Services\BlacklistService;
 use App\Services\Search\SearchResult;
 use Symfony\Component\DomCrawler\Crawler;
+use Uri\Rfc3986\Uri;
 
 class BraveSearchProvider implements SearchProviderInterface
 {
@@ -38,19 +39,21 @@ class BraveSearchProvider implements SearchProviderInterface
             }
 
             $link = $node->filter('a')->first()->attr('href') ?? '';
+            $link = new Uri($link);
 
             /** @var string $host */
-            $host = parse_url($link, PHP_URL_HOST);
+            $host = $link->getHost();
 
-            if (!$this->blacklistService->exists($host)) {
-                $resultList[] = new SearchResult(
-                    title: $title->text(),
-                    description: $description->text(),
-                    url: $link,
-                    provider: self::name,
-                    website: $host
-                );
-            }
+            if ($this->blacklistService->exists($host)) {
+                return;
+                }
+            $resultList[] = new SearchResult(
+                title: $title->text(),
+                description: $description->text(),
+                url: $link->toString(),
+                provider: self::name,
+                website: $host
+            );
         });
 
         return $resultList;
