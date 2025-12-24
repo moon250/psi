@@ -5,25 +5,30 @@ const author = document.getElementById("unsplash__author")
 const indicator = document.querySelector(".home-page__search")
 
 const collections = [
-    'bo8jQKTaE0Y', // Wallpapers
+    '9887946', // Space
+    '1065976', // Wallpapers
     '46022299', // Oceans
     'rnSKDHwwYUk', // Architecture
-    '6sMVjTLSkeQ', // Nature
+    '1155333', // Nature
     'xHxYTMHLgOc', // Street photography
     'Fzo3zuOHN6w', // Travels
     'Jpg6Kidl-Hk', // Animals
     'bDo48cUhwnY', // Arts & culture
-    'dijpbw99kQQ', // History
-    'M8jVbLbTRws', // Architecture & interior
+    'dijpbw99kQQ', // History,
 ]
 
 let res = {}
 
+const randint = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min
+}
+
 // If we are on the home page
 if (author) {
     if (!set || expired) {
+        const collection = collections[randint(0, collections.length)]
         res = await fetch(
-            `https://api.unsplash.com/photos/random?collections=${collections.join(',')}?orientation=landscape`,
+            `https://api.unsplash.com/photos/random?collections=${collection}?orientation=landscape`,
             {
                 method: 'GET',
                 headers: {

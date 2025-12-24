@@ -24,9 +24,20 @@ yarn build
 ```shell
 docker-compose up -d --build
 ```
+4. Copy and fill the .env
+```shell
+cp .env.example .env 
+php artisan key:generate --ainsi
+```
+5. Install php dependancies
+```shell
+composer install
+```
+6. Fill [Unsplash API key](https://unsplash.com/oauth/applications) in `.env` file
 
 ## 🔋 Technologies used
 - [Laravel](https://laravel.com)
+- [Unsplash API](https://unsplash.com/developers)
 
 Made with ♥️ by [moon250](https://github.com/moon250)
 
